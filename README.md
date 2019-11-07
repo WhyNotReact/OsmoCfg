@@ -1,1 +1,1 @@
-# osmo-nitb
+# osmonitb
