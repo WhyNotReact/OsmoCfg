@@ -10,8 +10,8 @@ dhclient $dev
 ip1=$(ip route show | grep default)
 ipgw=$(echo $ip1 | sed 's/.* \([0-9]\+\(\.[0-9]\+\)\{3\}\).*/\1/')
 ifconfig $dev down
-ifconfig $dev 192.168.0.9 netmask 255.255.255.0
-route add default gw $ipgw
+ifconfig $dev 192.168.0.9 netmask 255.255.255.0 up
+route add default gw $ipgw $dev
 ifconfig $dev up
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 sudo ip link add link $dev address $mac $dev.$nr type macvlan
